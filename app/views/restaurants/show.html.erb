@@ -1,0 +1,22 @@
+<% if session[:user_id] %>
+    <a href="/logout">Logout</a> 
+    <a href="/restaurants/new">+</a>
+    <h2>Restaurants</h2>
+    <ul>
+    <% @restaurants.each do |restaurant| %>
+        <li>
+        <a href="/restaurants/<%= restaurant.id %>/ratings/new"><%= restaurant.name %>--<%= restaurant.average_rating %> stars
+        </a></li>
+    <% end %>    
+    </ul>
+<% else %>
+    <a href='/'>Login</a>
+    <h2>Restaurants</h2>
+    <ul>
+    <% @restaurants.each do |restaurant| %>
+        <li>
+        <%= restaurant.name %>--<%= restaurant.average_rating %> stars
+        </li>
+    <% end %>    
+    </ul>
+<% end %>    

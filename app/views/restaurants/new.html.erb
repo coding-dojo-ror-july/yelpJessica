@@ -1,0 +1,12 @@
+<h3>Add new restaurant</h3>
+<form action="/restaurants/create" method="POST">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <label>Name</label>
+  <input type="text" name="restaurant[name]"><br>
+  <button>Add</button>
+</form>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p style="color:red;"><%= error %></p>
+  <% end %>
+<% end %>

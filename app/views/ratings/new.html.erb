@@ -1,0 +1,18 @@
+<h1>Rate <%= @restaurant.name %></h1>
+<form action="/restaurants/<%= @restaurant.id %>/ratings/<%= @user.id %>/create" method="POST">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <label>Rating</label>
+  <select name="stars">
+      <option value="1">*</option>
+      <option value="2">**</option>
+      <option value="3">***</option>
+      <option value="4">****</option>
+      <option value="5">*****</option>
+  </select>    
+  <button>Add</button>
+</form>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p style="color:red;"><%= error %></p>
+  <% end %>
+<% end %>
